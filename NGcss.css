@@ -1,9 +1,14 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
 
 body {
   text-align: center;
-  font-style: Open Sans;
+  font-family: 'Open Sans', sans-serif;
   /*font-weight: Bold 700 Light 300;*/
-  
+  font-weight: 300;
 }
 
 header {
@@ -22,6 +27,7 @@ header {
 
 .button {
   border-radius: 20%;
+  font-size: 1em
 }
 
 .button:disabled {
@@ -40,4 +46,4 @@ header {
   font-size: 200px;
   margin: 0px;
   color: #EB008B;
-}
+}*/*/*/

@@ -3,26 +3,27 @@
 <head>
   <title>Number Guesser!</title>
   <link rel="stylesheet" type="text/css" href="NGcss.css">
-  <script type="text/javascript" src=NGjs.js></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
 </head>
 <body>
   <header>
     <h1><span id="numbertitle">Number</span> <span id="guessertitle">Guesser</span></h1>
   </header>
-<section>
-  <input type="text" id="Enteryourguess" name="Enteryourguess" placeholder="Enter your guess">
-  <p>
-    <button type="submit" id="guessbutton" class="button">Guess</button>
-    <button id="clearbutton" class="button">Clear</button>
-  </p>
-</section>
-<section>
-  <p id="yourLastGuess">Your last guess was</p>
-  <p id="lastGuess">00</p>
-  <p id="response">Response</p>
-</section>
-<section>
-  <button id="resetbutton" class="button">Reset</button>
-</section>
+  <form>
+    <input type="number" id="userguess" placeholder="Enter your guess">
+  </form>
+  <section>
+      <button type="submit" id="guessbutton" class="button">Guess</button>
+      <button id="clearbutton" class="button">Clear</button>
+  </section>
+  <section>
+    <p id="yourLastGuess"></p>
+    <p id="lastGuess"></p>
+    <p id="result"></p>
+  </section>
+  <section>
+    <button id="resetbutton" class="button">Reset</button>
+  </section>
+ <script type="text/javascript" src="NGjs.js"></script>
 </body>
 </html>
