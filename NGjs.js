@@ -2,66 +2,66 @@
 //variables, event selectors, functions
 
 var inputValue = document.querySelector('#userguess');
+var yourLastGuess = document.querySelector('#yourLastGuess');
+var showLastGuess = document.querySelector('#lastGuess');
 var result = document.querySelector("#result");
 var clearButton = document.querySelector('#clearbutton');
 var resetButton = document.querySelector('#resetbutton');
 var guessButton = document.querySelector('#guessbutton');
 
 // // var inputValue = parseInt(input, 10);
+
+guessButton.addEventListener('click', yourLastGuessWas);
+guessButton.addEventListener('click', lastGuessDigits);
+guessButton.addEventListener('click', checkguess);
+clearButton.addEventListener('click', eraseText);
+resetButton.addEventListener('click', resetGame);
+resetButton.addEventListener('click', randomInteger)
+
 randomInteger();
 function randomInteger() {
   min = 1; //Math.ceil(min);
   max = 101; //Math.floor(max);
-  return randomInteger = Math.floor(Math.random() * (max-min)) + min;};
-  console.log(randomInteger)
+  return randomInteger = Math.floor(Math.random() * (max-min)) + min;
+};
+  console.log(randomInteger);
 
+function yourLastGuessWas (){
+  yourLastGuess.innerText='Your last guess was:'
+};
 
+function lastGuessDigits () {
+  var lastGuessDigits = inputValue.value;
+  showLastGuess.innerText=lastGuessDigits;
+};
+
+function checkguess(){
+  var lastInput = inputValue.value;
+if (lastInput > randomInteger) {
+result.innerText = 'That is too high'
+} else if (lastInput < randomInteger) {
+result.innerText = 'That is too low' 
+} else   
+  result.innerText = 'BOOM!' 
+};
+
+function eraseText () {
+  // var eraseInputBox = inputValue.value;
+  inputValue.value = ''
+};
+
+function resetGame () {
+  inputValue.value = '';
+  yourLastGuess.innerText = '';
+  showLastGuess.innerText = '';
+  result.innerText = ''
+};
 
 // var randomInteger = function(min,max) {
 //   min = Math.ceil(min);
 //   max = Math.floor(max);
 //   return Math.floor(Math.random() * (max-min)) + min;};
 
-
-guessButton.addEventListener('click', function(){
-  inputValue = document.querySelector('#userguess').value})
-
-guessButton.addEventListener('click', function(){
-   yourLastGuess.innerText='Your last guess was:';
- })
-
-guessButton.addEventListener('click', function(){
-   lastGuess.innerText=inputValue;
- })
-
-guessButton.addEventListener('click', checkguess )
-
-  function checkguess(){
-  if (inputValue > randomInteger) {
-  result.innerText = "That is too high"
-  } else if (inputValue < randomInteger) {
-  result.innerText = "That is too low" 
-  } else   
-    result.innerText = "BOOM!" 
-}
-
-resetButton.addEventListener('click', function() {
-  window.location.reload(true)}); 
-
-
-// resetButton.addEventListener('click', function() {
-//   min = 1; //Math.ceil(min);
-//   max = 101; //Math.floor(max);
-//   return randomInteger = Math.floor(Math.random() * (max-min)) + min;});
-// //randomInteger(1,101));
-
-clearButton.addEventListener('click', function eraseText() {
-    document.getElementById("userguess").value = "";
-})
-
-
-
-// //clear input field when .clearbutton is clicked
 
 // reset to log last guess/display users most recent input
 // reset to load new random number
