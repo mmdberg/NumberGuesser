@@ -1,7 +1,6 @@
 //console log parameters so you know whats coming through...
 //variables, event selectors, functions
 
-
 var inputValue = document.querySelector('#userguess');
 var yourLastGuess = document.querySelector('#yourLastGuess');
 var showLastGuess = document.querySelector('#lastGuess');
@@ -9,6 +8,8 @@ var result = document.querySelector("#result");
 var clearButton = document.querySelector('#clearbutton');
 var resetButton = document.querySelector('#resetbutton');
 var guessButton = document.querySelector('#guessbutton');
+var min = document.querySelector('#usermin')
+var max = document.querySelector('#usermax')
 
 // guessButton.addEventListener('click', yourLastGuessWas);
 // guessButton.addEventListener('click', lastGuessDigits);
@@ -17,34 +18,32 @@ clearButton.addEventListener('click', eraseText);
 resetButton.addEventListener('click', resetGame);
 resetButton.addEventListener('click', randomInteger)
 guessbutton.addEventListener('click', enterNumberField)
-// guessButton.addEventListener('click', buttonEnable(false));
+inputValue.addEventListener('keyup', textPresent)
+
+clearEnable(true);
+resetEnable(true);
 
 
-// clearButton.disabled = true;
-// resetButton.disabled = true;
-buttonEnable(true);
-randomInteger();
-
-function buttonEnable(booleanvalue) {
+function clearEnable(booleanvalue) {
     clearButton.disabled = booleanvalue;
+  }
+
+function resetEnable(booleanvalue) {
     resetButton.disabled = booleanvalue;
   }
 
-// function enableOnOff (){
-//   var newInputValue = inputValue.value;
-//   var numberValue = parseInt(newInputValue, 10);
-// if (isNaN(numberValue) === false) {
-//  buttonEnable(false)
-// } else {
-//   buttonEnable(true)
-// }
-// } 
+// function randomInteger() {
+//   min = 1; 
+//   max = 101; 
+//   return randomInteger = Math.floor(Math.random() * (max-min)) + min;
+// };
 
-function randomInteger() {
-  min = 1; //Math.ceil(min);
-  max = 101; //Math.floor(max);
-  return randomInteger = Math.floor(Math.random() * (max-min)) + min;
-};
+  var randomInteger = function(min,max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max-min+1)) + min;};
+
+  randomInteger(0,100);
   console.log(randomInteger);
 
 function yourLastGuessWas (){
@@ -72,7 +71,8 @@ if (isNaN(numberValue) === true) {
  yourLastGuessWas ();
  lastGuessDigits ();
  };
- buttonEnable(false)
+ clearEnable(false);
+ resetEnable(false);
 };
 
 function checkguess(){
@@ -85,9 +85,13 @@ result.innerText = 'That is too low'
   result.innerText = 'BOOM!' 
 };
 
+function textPresent() {
+  clearEnable(false)
+}
+
 function eraseText () {
   inputValue.value = '';
-  buttonEnable(true);
+  clearEnable(true);
 };
 
 function resetGame () {
@@ -95,7 +99,9 @@ function resetGame () {
   yourLastGuess.innerText = '';
   showLastGuess.innerText = '';
   result.innerText = '';
-  buttonEnable(true);
+  clearEnable(true);
+  resetEnable(true);
+  console.log(randomInteger);
 }
 
 // var randomInteger = function(min,max) {
