@@ -9,15 +9,19 @@
   <header>
     <h1><span id="numbertitle">Number</span> <span id="guessertitle">Guesser</span></h1>
   </header>
-  <form>
+    <form>
+       <p id="userrange">Enter a range and guess a number!</p>
     <input type="text" id="usermin" placeholder="Enter min value">
     <input type="text" id="usermax" placeholder="Enter max value">
     <br>
-    <input type="text" id="userguess" placeholder="Enter your guess">
+    <button type="submit" id="rangebutton" class="button">Enter Range</button>
   </form>
-  <section>
-      <button type="submit" id="guessbutton" class="button">Guess</button>
-      <button id="clearbutton" class="button">Clear</button>
+   <section>
+   
+    <input type="text" id="userguess" placeholder="Enter your guess">
+    <br>
+    <button type="submit" id="guessbutton" class="button">Guess</button>
+    <button id="clearbutton" class="button">Clear</button>
   </section>
   <section>
     <p id="yourLastGuess"></p>
@@ -27,6 +31,7 @@
   <section>
     <button id="resetbutton" class="button">Reset</button>
   </section>
+
  <script type="text/javascript" src="NGjs.js"></script>
 </body>
 </html>

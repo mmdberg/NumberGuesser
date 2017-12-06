@@ -1,6 +1,11 @@
 //console log parameters so you know whats coming through...
 //variables, event selectors, functions
 
+// var minimum = 1;
+// var maximum = 100;
+// randomInteger();
+// console.log(realRandom);
+
 var inputValue = document.querySelector('#userguess');
 var yourLastGuess = document.querySelector('#yourLastGuess');
 var showLastGuess = document.querySelector('#lastGuess');
@@ -8,21 +13,24 @@ var result = document.querySelector("#result");
 var clearButton = document.querySelector('#clearbutton');
 var resetButton = document.querySelector('#resetbutton');
 var guessButton = document.querySelector('#guessbutton');
-var min = document.querySelector('#usermin')
-var max = document.querySelector('#usermax')
+var minimum = document.querySelector('#usermin');
+var maximum = document.querySelector('#usermax');
+var rangeButton = document.querySelector('#rangebutton');
+// var realRandom = randomInteger(minimum,maximum);
+var rangeText = document.querySelector('#userrange')
 
-// guessButton.addEventListener('click', yourLastGuessWas);
-// guessButton.addEventListener('click', lastGuessDigits);
-// guessButton.addEventListener('click', checkguess);
 clearButton.addEventListener('click', eraseText);
 resetButton.addEventListener('click', resetGame);
-resetButton.addEventListener('click', randomInteger)
-guessbutton.addEventListener('click', enterNumberField)
+guessButton.addEventListener('click', enterNumberField)
 inputValue.addEventListener('keyup', textPresent)
+usermax.addEventListener('keyup', textMax)
+rangeButton.addEventListener('click', randomInteger)
+rangeButton.addEventListener('click', showRange)
 
 clearEnable(true);
 resetEnable(true);
-
+guessEnable(true);
+rangeEnable(true);
 
 function clearEnable(booleanvalue) {
     clearButton.disabled = booleanvalue;
@@ -32,19 +40,58 @@ function resetEnable(booleanvalue) {
     resetButton.disabled = booleanvalue;
   }
 
-// function randomInteger() {
-//   min = 1; 
-//   max = 101; 
-//   return randomInteger = Math.floor(Math.random() * (max-min)) + min;
-// };
+function guessEnable(booleanvalue) {
+    guessButton.disabled = booleanvalue;
+}
 
-  var randomInteger = function(min,max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max-min+1)) + min;};
+function rangeEnable(booleanvalue) {
+    rangeButton.disabled = booleanvalue;
+}
 
-  randomInteger(0,100);
-  console.log(randomInteger);
+function showRange(event) {
+  event.preventDefault();
+  var minValue = minimum.value; 
+  var maxValue = maximum.value;
+  rangeText.innerText= 'Now guess! Enter a number between ' + minValue + ' and ' + maxValue;
+  rangeEnable(true);
+}
+
+//   var userMin = minimum.value;
+//   var userMax = maximum.value;
+
+//   if 
+//   randomInteger(userMin,userMax);
+// }
+
+function randomInteger() {
+  min = Math.ceil(minimum.value);
+  max = Math.floor(maximum.value);
+  return realRandom = Math.floor(Math.random() * (max-min+1)) + min;
+};
+
+// function showRange(minimum,maximum) {
+//   rangeText.innerText="'Pick a number between ' + minimum + ' and ' maximum;"
+// }
+
+function enterNumberField () {
+  var newInputValue = inputValue.value;
+  var numberValue = parseInt(newInputValue, 10);
+  // var min = parseInt(minimum.value,10);
+  // var max = parseInt(maximum.value,10);
+if (isNaN(numberValue) === true) {
+ alert('Oops! Please Enter A Number!');
+} else if (numberValue < min) {
+ alert('Oops! Guess must be between ' + min + ' and ' + max)
+} else if (numberValue > max) {
+ alert('Oops! Guess must be between ' + min + ' and ' + max)
+} else {
+ yourLastGuessWas ();
+ lastGuessDigits ();
+ checkguess ()
+ };
+ clearEnable(false);
+ resetEnable(false);
+};
 
 function yourLastGuessWas (){
   yourLastGuess.innerText='Your last guess was:'
@@ -55,38 +102,23 @@ function lastGuessDigits () {
   showLastGuess.innerText=lastGuessDigits;
 };
 
-function enterNumberField () {
-  var newInputValue = inputValue.value;
-  var numberValue = parseInt(newInputValue, 10);
-  var min = 1;
-  var max = 101;
-if (isNaN(numberValue) === true) {
- alert('Oops! Please Enter A Number!');
-} else if (numberValue < min) {
- alert('Oops! Guess must be between 1 and 100')
-} else if (numberValue > max) {
- alert('Oops! Guess must be between 1 and 100')
-} else {
- checkguess ();
- yourLastGuessWas ();
- lastGuessDigits ();
- };
- clearEnable(false);
- resetEnable(false);
-};
-
 function checkguess(){
   var lastInput = inputValue.value;
- if (lastInput > randomInteger) {
+ if (lastInput > realRandom) {
 result.innerText = 'That is too high'
-} else if (lastInput < randomInteger) {
+} else if (lastInput < realRandom) {
 result.innerText = 'That is too low' 
 } else   
   result.innerText = 'BOOM!' 
 };
 
 function textPresent() {
-  clearEnable(false)
+  clearEnable(false);
+  guessEnable(false);
+}
+
+function textMax () {
+  rangeEnable(false);
 }
 
 function eraseText () {
@@ -99,14 +131,14 @@ function resetGame () {
   yourLastGuess.innerText = '';
   showLastGuess.innerText = '';
   result.innerText = '';
+  minimum.value = '';
+  maximum.value = '';
   clearEnable(true);
   resetEnable(true);
-  console.log(randomInteger);
+  guessEnable(true);
+  randomInteger(1,100);
+  console.log(realRandom);
+  rangeText.innerText= 'Please Pick a New Range';
 }
-
-// var randomInteger = function(min,max) {
-//   min = Math.ceil(min);
-//   max = Math.floor(max);
-//   return Math.floor(Math.random() * (max-min)) + min;};
 
 
