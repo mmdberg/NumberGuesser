@@ -16,7 +16,6 @@ var guessButton = document.querySelector('#guessbutton');
 var minimum = document.querySelector('#usermin');
 var maximum = document.querySelector('#usermax');
 var rangeButton = document.querySelector('#rangebutton');
-// var realRandom = randomInteger(minimum,maximum);
 var rangeText = document.querySelector('#userrange')
 
 clearButton.addEventListener('click', eraseText);
@@ -53,25 +52,21 @@ function showRange(event) {
   var minValue = minimum.value; 
   var maxValue = maximum.value;
   rangeText.innerText= 'Now guess! Enter a number between ' + minValue + ' and ' + maxValue;
+  var rangeMinValue = parseInt(minValue, 10);
+if (isNaN(rangeMinValue) === true) {
+ alert('Oops! Please Enter A Minimum Number!');
+};
+ var rangeMaxValue = parseInt(maxValue, 10);
+if (isNaN(rangeMaxValue) === true) {
+ alert('Oops! Please Enter A Maximum Number!');
   rangeEnable(true);
-}
-
-//   var userMin = minimum.value;
-//   var userMax = maximum.value;
-
-//   if 
-//   randomInteger(userMin,userMax);
-// }
+}}
 
 function randomInteger() {
   min = Math.ceil(minimum.value);
   max = Math.floor(maximum.value);
   return realRandom = Math.floor(Math.random() * (max-min+1)) + min;
 };
-
-// function showRange(minimum,maximum) {
-//   rangeText.innerText="'Pick a number between ' + minimum + ' and ' maximum;"
-// }
 
 function enterNumberField () {
   var newInputValue = inputValue.value;
@@ -137,7 +132,6 @@ function resetGame () {
   resetEnable(true);
   guessEnable(true);
   randomInteger(1,100);
-  console.log(realRandom);
   rangeText.innerText= 'Please Pick a New Range';
 }
 
