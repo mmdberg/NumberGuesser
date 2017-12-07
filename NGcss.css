@@ -14,7 +14,14 @@ body {
 
 header {
   background-color: #404041; 
-  height: 200px;
+  height: 100px;
+  
+}
+
+h1 {
+  font-size: 50px;
+  padding-top: 15px;
+
 }
 
 #numbertitle {
@@ -27,9 +34,19 @@ header {
   font-weight: 300;
 }
 
+form  {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .button {
   border-radius: 20px;
-  font-size: 1em
+  background-color: #929497;
+  color: white;
+  font-size: 1em;
+  width: 270px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .button:disabled {
@@ -39,13 +56,23 @@ header {
 .button:hover {
   background-color: #EB008B;
 }
-/*
-#resetbutton {
-  width: 250px;
-}*/
+
+.smallbutton {
+  width: 133px;
+}
+
+p {
+  font-size: 30px;
+  padding-bottom: 10px;
+}
 
 #lastGuess {
   font-size: 200px;
-  margin: 0px;
+  margin-bottom: 0px;
   color: #EB008B;
+}
+
+#resetbox {
+  padding-bottom: 0px;
+  height: 40px;
 }
